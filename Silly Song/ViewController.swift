@@ -19,6 +19,13 @@ func shortNameFromName(fullName: String) -> String {
     return fullName.lowercaseString
 }
 
+let bananaFanaTemplate = [
+    "<FULL_NAME>, <FULL_NAME>, Bo B<SHORT_NAME>",
+    "Banana Fana Fo F<SHORT_NAME>",
+    "Me My Mo M<SHORT_NAME>",
+    "<FULL_NAME>"
+].joinWithSeparator("\n")
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var nameField: UITextField!
