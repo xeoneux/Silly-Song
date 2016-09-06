@@ -44,6 +44,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameField.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -53,10 +54,20 @@ class ViewController: UIViewController {
     }
 
     @IBAction func reset(sender: AnyObject) {
+        self.nameField.text = ""
+        self.lyricsView.text = ""
     }
 
     @IBAction func displayLyrics(sender: AnyObject) {
+        self.lyricsView.text = lyricsForName(bananaFanaTemplate, fullName: self.nameField.text!)
     }
 
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
 }
 
