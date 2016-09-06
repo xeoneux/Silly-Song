@@ -8,6 +8,13 @@
 
 import UIKit
 
+let bananaFanaTemplate = [
+    "<FULL_NAME>, <FULL_NAME>, Bo B<SHORT_NAME>",
+    "Banana Fana Fo F<SHORT_NAME>",
+    "Me My Mo M<SHORT_NAME>",
+    "<FULL_NAME>"
+].joinWithSeparator("\n")
+
 func shortNameFromName(fullName: String) -> String {
 
     let vowelSet = NSCharacterSet(charactersInString: "aeiou")
@@ -19,12 +26,16 @@ func shortNameFromName(fullName: String) -> String {
     return fullName.lowercaseString
 }
 
-let bananaFanaTemplate = [
-    "<FULL_NAME>, <FULL_NAME>, Bo B<SHORT_NAME>",
-    "Banana Fana Fo F<SHORT_NAME>",
-    "Me My Mo M<SHORT_NAME>",
-    "<FULL_NAME>"
-].joinWithSeparator("\n")
+func lyricsForName(lyricsTemplate: String, fullName: String) -> String {
+
+    let shortName = shortNameFromName(fullName)
+
+    let lyrics = lyricsTemplate
+        .stringByReplacingOccurrencesOfString("<FULL_NAME>", withString: fullName)
+        .stringByReplacingOccurrencesOfString("<SHORT_NAME>", withString: shortName)
+
+    return lyrics
+}
 
 class ViewController: UIViewController {
 
