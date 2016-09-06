@@ -8,6 +8,17 @@
 
 import UIKit
 
+func shortNameFromName(fullName: String) -> String {
+
+    let vowelSet = NSCharacterSet(charactersInString: "aeiou")
+
+    if let firstVowelRange = fullName.lowercaseString.rangeOfCharacterFromSet(vowelSet) {
+        return fullName.lowercaseString.substringFromIndex(firstVowelRange.startIndex)
+    }
+
+    return fullName.lowercaseString
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var nameField: UITextField!
@@ -25,7 +36,7 @@ class ViewController: UIViewController {
 
     @IBAction func reset(sender: AnyObject) {
     }
-    
+
     @IBAction func displayLyrics(sender: AnyObject) {
     }
 
